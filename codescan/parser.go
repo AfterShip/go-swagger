@@ -206,6 +206,14 @@ type swaggerTypable interface {
 // See https://golang.org/pkg/builtin/ and http://swagger.io/specification/
 func swaggerSchemaForType(typeName string, prop swaggerTypable) error {
 	switch typeName {
+	case "date":
+		fallthrough
+	case "civil.Date":
+		fallthrough
+	case "time":
+		fallthrough
+	case "time.Time":
+		prop.Typed("string", "date-time")
 	case "bool":
 		prop.Typed("boolean", "")
 	case "byte":
