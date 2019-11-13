@@ -207,12 +207,8 @@ type swaggerTypable interface {
 func swaggerSchemaForType(typeName string, prop swaggerTypable) error {
 	switch typeName {
 	case "date":
-		fallthrough
-	case "civil.Date":
-		fallthrough
+		prop.Typed("string", "date")
 	case "time":
-		fallthrough
-	case "time.Time":
 		prop.Typed("string", "date-time")
 	case "bool":
 		prop.Typed("boolean", "")
