@@ -279,6 +279,10 @@ func (s *schemaBuilder) buildFromType(tpe types.Type, tgt swaggerTypable) error 
 					tgt.Typed("string", sfnm)
 					return nil
 				}
+				if typeName, ok := typeName(cmt); ok {
+					_ = swaggerSchemaForType(typeName, tgt)
+					return nil
+				}
 				if err := s.makeRef(decl, tgt); err != nil {
 					return err
 				}
