@@ -664,6 +664,22 @@ func (s *schemaBuilder) buildFromStruct(decl *entityDecl, st *types.Struct, sche
 	if tgt == nil {
 		tgt = schema
 	}
+
+	if tgt == nil {
+		// added by yzc at 2019-11-29
+		fmt.Println("=================================================================================================")
+		fmt.Println("missing some annotations in struct comments:")
+		fmt.Println("package: ", decl.Pkg.PkgPath)
+		fmt.Println("parent struct type:", decl.Type.String())
+		fmt.Println("parent struct underlying:", decl.Type.Underlying())
+		fmt.Println("parent struct comments :")
+		for index, comment := range decl.Comments.List {
+			fmt.Println("           - comment", index+1, ":", comment.Text)
+		}
+		fmt.Println("struct that missing annotation:", st.Underlying())
+		fmt.Println("=================================================================================================")
+	}
+
 	// We can finally build the actual schema for the struct
 	if tgt.Properties == nil {
 		tgt.Properties = make(map[string]spec.Schema)
