@@ -41,5 +41,5 @@ require (
 	golang.org/x/tools v0.0.0-20190907020128-2ca718005c18
 	google.golang.org/appengine v1.6.2 // indirect
 	gopkg.in/square/go-jose.v2 v2.3.1 // indirect
-	gopkg.in/yaml.v2 v2.2.2
+	gopkg.in/yaml.v2 v2.2.8
 )
